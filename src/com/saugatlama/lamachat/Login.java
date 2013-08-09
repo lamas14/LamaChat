@@ -1,30 +1,43 @@
 package com.saugatlama.lamachat;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
 
 public class Login extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
+	private JTextField txtUsername;
 
 	/**
 	 * Create the frame.
 	 */
 	public Login() {
+		setResizable(false);
+		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setSize(300, 350);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		txtUsername = new JTextField();
+		txtUsername.setBounds(118, 76, 135, 20);
+		contentPane.add(txtUsername);
+		txtUsername.setColumns(10);
+		
+		JLabel lblUsername = new JLabel("Username:");
+		lblUsername.setBounds(39, 79, 69, 14);
+		contentPane.add(lblUsername);
 	}
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -40,5 +53,4 @@ public class Login extends JFrame {
 			}
 		});
 	}
-
 }
