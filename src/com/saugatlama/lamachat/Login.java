@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login extends JFrame {
 
@@ -74,8 +76,24 @@ public class Login extends JFrame {
 		contentPane.add(lblPortDesc);
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String name = txtUsername.getText();
+				String address = txtAddress.getText();
+				int port = Integer.parseInt(txtPort.getText());
+				login(name, address, port);
+			}
+		});
 		btnLogin.setBounds(102, 234, 89, 23);
 		contentPane.add(btnLogin);
+	}
+
+	/*
+	 * Login method
+	 */
+	private void login(String name, String address, int port) {
+		dispose();
+		System.out.println(name + ", " + address + ", " + port);
 	}
 
 	/**
