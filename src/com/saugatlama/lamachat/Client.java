@@ -20,6 +20,7 @@ public class Client extends JFrame {
 	private String name, address;
 	private int port;
 	private JTextField txtMessage;
+	private JTextArea txtrHistory; 
 
 	/**
 	 * Create the frame.
@@ -30,6 +31,7 @@ public class Client extends JFrame {
 		this.address = address;
 		this.port = port;
 		createWindow();
+		console("Attempting to connect " + name + " to " + address + ":"+ port);
 	}
 	
 	private void createWindow() {
@@ -52,7 +54,7 @@ public class Client extends JFrame {
 		gbl_contentPane.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
-		JTextArea txtrHistory = new JTextArea();
+		txtrHistory = new JTextArea();
 		txtrHistory.setEditable(false);
 		GridBagConstraints gbc_txtrHistory = new GridBagConstraints();
 		gbc_txtrHistory.insets = new Insets(5, 5, 0, 0);
@@ -78,8 +80,12 @@ public class Client extends JFrame {
 		gbc_btnSend.gridy = 2;
 		contentPane.add(btnSend, gbc_btnSend);
 		
-		txtMessage.requestFocus();
 		setVisible(true);
+		txtMessage.requestFocusInWindow();
+	}
+	
+	public void console(String message){
+		txtrHistory.append(message + "\n\r");
 	}
 
 }
